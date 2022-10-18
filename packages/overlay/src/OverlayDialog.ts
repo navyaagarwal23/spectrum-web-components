@@ -55,9 +55,7 @@ export function OverlayDialog<T extends Constructor<AbstractOverlay>>(
             const start =
                 (el: OpenableElement, index: number) =>
                 async (): Promise<void> => {
-                    if (typeof el.open !== 'undefined') {
-                        el.open = targetOpenState;
-                    }
+                    el.toggleAttribute('open', targetOpenState);
                     if (!targetOpenState) {
                         const close = (): void => {
                             el.removeEventListener('close', close);

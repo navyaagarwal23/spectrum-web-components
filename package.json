@@ -202,6 +202,13 @@
         "wireit": "^0.14.1",
         "yargs": "^17.2.1"
     },
+    "resolutions": {
+        "@lit-labs/observers": "2.0.2",
+        "@lit/reactive-element": "1.6.3",
+        "lit": "2.8.0",
+        "lit-element": "3.3.3",
+        "lit-html": "2.8.0"
+    },
     "wireit": {
         "build:css:watch": {
             "command": "node ./tasks/watch-css.js",
@@ -254,8 +261,7 @@
                 "packages/**/*.js.map",
                 "projects/**/*.js.map",
                 "!projects/documentation/**/*.js",
-                "!projects/css-custom-vars-viewer/.storybook/*.js",
-                "!projects/css-custom-vars-viewer/scripts/parse-json.js",
+                "!projects/css-custom-vars-viewer/**/*",
                 "!projects/example-project-rollup",
                 "!projects/example-project-webpack",
                 "!projects/templates",

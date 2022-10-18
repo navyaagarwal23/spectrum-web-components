@@ -137,33 +137,33 @@ export function OverlayPopover<T extends Constructor<AbstractOverlay>>(
                 return null;
             }
             let focusEl = null as HTMLElement | null;
-            const start = (el: OpenableElement, index: number) => (): void => {
-                if (typeof el.open !== 'undefined') {
-                    el.open = targetOpenState;
-                }
-                if (index === 0) {
-                    const event = targetOpenState
-                        ? BeforetoggleOpenEvent
-                        : BeforetoggleClosedEvent;
-                    this.dispatchEvent(new event());
-                }
-                if (!targetOpenState) {
-                    return;
-                }
-                if (el.matches(userFocusableSelector)) {
-                    focusEl = el;
-                }
-                focusEl = focusEl || firstFocusableIn(el);
-                if (focusEl) {
-                    return;
-                }
-                const childSlots = el.querySelectorAll('slot');
-                childSlots.forEach((slot) => {
-                    if (!focusEl) {
-                        focusEl = firstFocusableSlottedIn(slot);
+            const start =
+                (el: OpenableElement, index: number) =>
+                async (): Promise<void> => {
+                    el.toggleAttribute('open', targetOpenState);
+                    if (index === 0) {
+                        const event = targetOpenState
+                            ? BeforetoggleOpenEvent
+                            : BeforetoggleClosedEvent;
+                        this.dispatchEvent(new event());
                     }
-                });
-            };
+                    if (!targetOpenState) {
+                        return;
+                    }
+                    if (el.matches(userFocusableSelector)) {
+                        focusEl = el;
+                    }
+                    focusEl = focusEl || firstFocusableIn(el);
+                    if (focusEl) {
+                        return;
+                    }
+                    const childSlots = el.querySelectorAll('slot');
+                    childSlots.forEach((slot) => {
+                        if (!focusEl) {
+                            focusEl = firstFocusableSlottedIn(slot);
+                        }
+                    });
+                };
             const finish =
                 (el: OpenableElement, index: number) =>
                 async (): Promise<void> => {

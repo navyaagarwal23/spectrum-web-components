@@ -20,6 +20,7 @@ import cssnano from 'cssnano';
 async function main() {
     await build({
         entryPoints: [
+            './src/components/layout-element.ts',
             './src/components.ts',
             './src/getting-started.ts',
             './src/index.ts',
@@ -63,7 +64,14 @@ async function main() {
                 },
             }),
         ],
-        external: ['@spectrum-web-components/*'],
+        external: [
+            '@lit/reactive-element',
+            'lit',
+            'lit-element',
+            'lit-html',
+            '@spectrum-web-components/*',
+            './layout-element.js',
+        ],
     });
     process.exit(0);
 }

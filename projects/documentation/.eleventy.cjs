@@ -10,17 +10,18 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addNunjucksGlobal('WATCH_MODE', process.env.WATCH_MODE);
     eleventyConfig.setUseGitIgnore(false);
-    eleventyConfig.addPassthroughCopy('./content/favicon.ico');
-    eleventyConfig.addPassthroughCopy('./content/favicon.svg');
-    eleventyConfig.addPassthroughCopy('./content/404.html');
-    eleventyConfig.addPassthroughCopy('./content/serviceWorker.js');
-    eleventyConfig.addPassthroughCopy('./content/images/**/*');
-    eleventyConfig.addPassthroughCopy('./content/manifest.webmanifest');
-    eleventyConfig.addPassthroughCopy('../src/**/*.css');
+    eleventyConfig.addPassthroughCopy('content/favicon.ico');
+    eleventyConfig.addPassthroughCopy('content/favicon.svg');
+    eleventyConfig.addPassthroughCopy('content/404.html');
+    eleventyConfig.addPassthroughCopy('content/serviceWorker.js');
+    eleventyConfig.addPassthroughCopy('content/images/**/*');
+    eleventyConfig.addPassthroughCopy('content/manifest.webmanifest');
+    eleventyConfig.addPassthroughCopy('src/**/*.css');
     eleventyConfig.addPlugin(syntaxHighlight, {
         init: function ({ Prism }) {
             Prism.languages['html-live'] = Prism.languages.html;
@@ -159,6 +160,11 @@ module.exports = function (eleventyConfig) {
                 }
                 return 0;
             });
+    });
+
+    eleventyConfig.addPlugin(litPlugin, {
+        mode: 'vm',
+        componentModules: ['_site/src/components/layout-element.js'],
     });
 
     return {
