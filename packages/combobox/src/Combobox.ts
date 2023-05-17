@@ -508,7 +508,7 @@ export class Combobox extends Textfield {
         }
         if (changed.has('activeDescendant')) {
             if (changed.get('activeDescendant')) {
-                (changed.get('activeDescendant') as MenuItem).focused = false;
+                (changed.get('activeDescendant') as unknown as MenuItem).focused = false;
             }
             if (
                 this.activeDescendant &&
