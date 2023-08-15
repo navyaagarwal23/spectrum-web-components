@@ -73,6 +73,7 @@ declare global {
     interface GlobalEventHandlersEventMap {
         'sp-open': CustomEvent<OverlayOpenCloseDetail>;
         'sp-close': CustomEvent<OverlayOpenCloseDetail>;
+        'sp-closed': CustomEvent<OverlayOpenCloseDetail>;
     }
 }
 
