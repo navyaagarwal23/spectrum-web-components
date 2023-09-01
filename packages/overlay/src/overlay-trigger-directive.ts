@@ -12,18 +12,11 @@ governing permissions and limitations under the License.
 import { ElementPart, nothing, render, TemplateResult } from 'lit';
 import { AsyncDirective, directive } from 'lit/async-directive.js';
 import { Overlay } from './overlay.js';
-import { OverlayContentTypes } from './OverlayTrigger.js';
-import {
-    OverlayOpenCloseDetail,
-    OverlayTriggerInteractions,
-    Placement,
-} from './overlay-types.js';
+import { OverlayOptions } from './overlay-types.js';
 
 export type OverlayTriggerOptions = {
-    triggerOn: OverlayContentTypes;
-    placement: Placement;
-    type: OverlayTriggerInteractions;
-    offset: number;
+    triggerInteraction: 'click' | 'hover' | 'longpress';
+    overlayOptions: OverlayOptions;
 };
 
 export class OverlayTriggerDirective extends AsyncDirective {
@@ -31,10 +24,12 @@ export class OverlayTriggerDirective extends AsyncDirective {
     private target?: HTMLElement;
 
     protected defaultOptions: OverlayTriggerOptions = {
-        triggerOn: 'hover',
-        placement: 'top-start',
-        type: 'inline',
-        offset: 0,
+        triggerInteraction: 'hover',
+        overlayOptions: {
+            placement: 'top-start',
+            type: 'auto',
+            offset: 0,
+        },
     };
     protected options: OverlayTriggerOptions = { ...this.defaultOptions };
 
@@ -63,6 +58,9 @@ export class OverlayTriggerDirective extends AsyncDirective {
         this.options = {
             ...this.defaultOptions,
             ...options,
+            triggerInteraction:
+                options?.triggerInteraction ||
+                this.defaultOptions.triggerInteraction,
         };
         this.template = template;
 
@@ -91,23 +89,19 @@ export class OverlayTriggerDirective extends AsyncDirective {
         // actually open the overlay with this content
         this.closeOverlay = Overlay.open(
             this.target,
-            this.options.triggerOn,
+            this.options.triggerInteraction,
             this.overlaidContent,
             {
-                placement: this.options.placement,
-                offset: this.options.offset,
+                placement: this.options.overlayOptions.placement,
+                offset: (this.options.overlayOptions.offset || 0) as number,
                 abortPromise,
             }
         );
     }
 
-    private handleClosed = (
-        event: CustomEvent<OverlayOpenCloseDetail>
-    ): void => {
+    private handleClosed = (): void => {
         // closed outside of our control?
-        if (event?.detail.interaction === this.options.triggerOn) {
-            this.open = false;
-        }
+        this.open = false;
     };
 
     private async doClose(): Promise<void> {
@@ -143,7 +137,7 @@ export class OverlayTriggerDirective extends AsyncDirective {
         }
         this.target.addEventListener('sp-closed', this.handleClosed);
 
-        switch (this.options.triggerOn) {
+        switch (this.options.triggerInteraction) {
             case 'hover': {
                 this.target.addEventListener('mouseenter', this.activate);
                 this.target.addEventListener('focusin', this.activate);
@@ -164,7 +158,7 @@ export class OverlayTriggerDirective extends AsyncDirective {
     private deactivate = (event: Event): void => {
         const mouseIsEnteringHoverContent =
             event.type === 'mouseleave' &&
-            this.options.triggerOn === 'hover' &&
+            this.options.triggerInteraction === 'hover' &&
             this.open &&
             (event as unknown as MouseEvent).relatedTarget ===
                 this.overlaidContent;

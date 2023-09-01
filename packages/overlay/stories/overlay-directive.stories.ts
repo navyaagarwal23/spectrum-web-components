@@ -178,8 +178,10 @@ const template = ({
                                             </sp-popover>
                                         `,
                                         {
-                                            placement: 'bottom',
-                                            triggerOn: 'click',
+                                            triggerInteraction: 'click',
+                                            overlayOptions: {
+                                                placement: 'bottom',
+                                            },
                                         }
                                     )}
                                 >
@@ -190,9 +192,11 @@ const template = ({
                     </sp-popover>
                 `,
                 {
-                    placement,
-                    triggerOn,
-                    offset,
+                    triggerInteraction: triggerOn,
+                    overlayOptions: {
+                        placement,
+                        offset,
+                    },
                 }
             )}
         >

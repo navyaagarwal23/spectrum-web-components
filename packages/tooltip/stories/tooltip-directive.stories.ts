@@ -40,7 +40,12 @@ export const Default = ({
     variant,
 }: Properties): TemplateResult => {
     return html`
-        <sp-button ${tooltip(text || 'Tooltip', { placement, variant })}>
+        <sp-button
+            ${tooltip(text || 'Tooltip', {
+                overlayOptions: { placement },
+                variant,
+            })}
+        >
             Hover me
         </sp-button>
     `;
