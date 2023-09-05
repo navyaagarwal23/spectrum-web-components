@@ -58,7 +58,8 @@
     ],
     "dependencies": {
         "@spectrum-web-components/base": "^0.40.2",
-        "@spectrum-web-components/overlay": "^0.40.2"
+        "@spectrum-web-components/overlay": "^0.40.2",
+        "@spectrum-web-components/styles": "^0.40.1"
     },
     "devDependencies": {
         "@spectrum-css/popover": "^6.0.74"

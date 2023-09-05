@@ -11,22 +11,4 @@ governing permissions and limitations under the License.
 */
 
 /* THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
-:host {
-    --spectrum-menu-divider-thickness: var(--spectrum-divider-thickness-medium);
-    inline-size: auto;
-    margin-block: var(
-        --mod-menu-section-divider-margin-block,
-        max(
-            0px,
-            (
-                    var(--spectrum-menu-item-section-divider-height) -
-                        var(--spectrum-menu-divider-thickness)
-                )/2
-        )
-    );
-    margin-inline: var(
-        --mod-menu-item-label-inline-edge-to-content,
-        var(--spectrum-menu-item-label-inline-edge-to-content)
-    );
-    overflow: visible;
-}
+:host{--spectrum-menu-divider-thickness:var(--spectrum-divider-thickness-medium);inline-size:auto;margin-block:var(--mod-menu-section-divider-margin-block,max(0px,(var(--spectrum-menu-item-section-divider-height) - var(--spectrum-menu-divider-thickness))/2));margin-inline:var(--mod-menu-item-label-inline-edge-to-content,var(--spectrum-menu-item-label-inline-edge-to-content));overflow:visible}

@@ -19,6 +19,112 @@ governing permissions and limitations under the License.
 
 #tooltip {
     inline-size: max-content;
+
+    --spectrum-overlay-animation-duration: var(
+        --spectrum-animation-duration-100
+    );
+
+    opacity: 0;
+    pointer-events: none;
+    transition: transform
+            var(
+                --mod-overlay-animation-transform-duration,
+                var(--spectrum-overlay-animation-duration)
+            )
+            ease-in-out,
+        opacity
+            var(
+                --mod-overlay-animation-opacity-duration,
+                var(--spectrum-overlay-animation-duration)
+            )
+            ease-in-out,
+        visibility 0s linear
+            var(
+                --mod-overlay-animation-visibility-duration,
+                var(--spectrum-overlay-animation-duration)
+            );
+    visibility: hidden;
+}
+
+:host([open]) #tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0s;
+    visibility: visible;
+}
+
+:host([placement*='bottom']) #tooltip {
+    transform: translateY(var(--mod-overlay-animation-start-distance, 0));
+}
+
+:host([placement*='top']) #tooltip {
+    transform: translateY(
+        calc(var(--mod-overlay-animation-start-distance, 0) * -1)
+    );
+}
+
+:host([placement*='right']) #tooltip {
+    transform: translateX(var(--mod-overlay-animation-start-distance, 0));
+}
+
+:host([placement*='left']) #tooltip {
+    transform: translateX(
+        calc(var(--mod-overlay-animation-start-distance, 0) * -1)
+    );
+}
+
+
+:host([open]) .spectrum-Tooltip--bottom-end,
+:host([open]) .spectrum-Tooltip--bottom-left,
+:host([open]) .spectrum-Tooltip--bottom-right,
+:host([open]) .spectrum-Tooltip--bottom-start,
+:host([placement*='bottom'][open]) #tooltip {
+    --spectrum-overlay-animation-distance: 6px;
+
+    transform: translateY(var(--mod-overlay-animation-distance, var(--spectrum-overlay-animation-distance)));
+}
+
+:host([open]) #tooltip,
+:host([open]) .spectrum-Tooltip--top-end,
+:host([open]) .spectrum-Tooltip--top-left,
+:host([open]) .spectrum-Tooltip--top-right,
+:host([open]) .spectrum-Tooltip--top-start,
+:host([placement*='top'][open]) #tooltip {
+    --spectrum-overlay-animation-distance: 6px;
+
+    transform: translateY(
+        calc(var(--mod-overlay-animation-distance, var(--spectrum-overlay-animation-distance)) * -1)
+    );
+}
+
+:host([dir='rtl'][open]) .spectrum-Tooltip--start,
+:host([dir='rtl'][open]) .spectrum-Tooltip--start-bottom,
+:host([dir='rtl'][open]) .spectrum-Tooltip--start-top,
+:host([open]) .spectrum-Tooltip--end,
+:host([open]) .spectrum-Tooltip--end-bottom,
+:host([open]) .spectrum-Tooltip--end-top,
+:host([open]) .spectrum-Tooltip--right-bottom,
+:host([open]) .spectrum-Tooltip--right-top,
+:host([placement*='right'][open]) #tooltip {
+    --spectrum-overlay-animation-distance: 6px;
+
+    transform: translateX(var(--mod-overlay-animation-distance, var(--spectrum-overlay-animation-distance)));
+}
+
+:host([dir='rtl'][open]) .spectrum-Tooltip--end,
+:host([dir='rtl'][open]) .spectrum-Tooltip--end-bottom,
+:host([dir='rtl'][open]) .spectrum-Tooltip--end-top,
+:host([open]) .spectrum-Tooltip--left-bottom,
+:host([open]) .spectrum-Tooltip--left-top,
+:host([open]) .spectrum-Tooltip--start,
+:host([open]) .spectrum-Tooltip--start-bottom,
+:host([open]) .spectrum-Tooltip--start-top,
+:host([placement*='left'][open]) #tooltip {
+    --spectrum-overlay-animation-distance: 6px;
+
+    transform: translateX(
+        calc(var(--mod-overlay-animation-distance, var(--spectrum-overlay-animation-distance)) * -1)
+    );
 }
 
 :host([placement]) #tooltip {

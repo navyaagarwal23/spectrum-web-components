@@ -10,8 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-const DEFAULT_WARMUP = 1000;
-const DEFAULT_COOLDOWN = 1000;
+const DEFAULT_WARMUP = 1500;
+const DEFAULT_COOLDOWN = 500;
 
 /**
  * A timer to help with implementation of warnup/cooldown behavior as described here:
