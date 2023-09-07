@@ -1,0 +1,1 @@
+@import "./spectrum-status-light.css";:host([disabled]):before{background-color:var(--spectrum-statuslight-dot-color-disabled,var(--spectrum-global-color-gray-400))}

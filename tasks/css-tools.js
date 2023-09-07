@@ -12,7 +12,8 @@ governing permissions and limitations under the License.
 
 import path from 'path';
 import fs from 'fs';
-import postcss from 'postcss';
+// import postcss from 'postcss';
+import { transform } from 'lightningcss';
 import cssProcessing from '../scripts/css-processing.cjs';
 import { fileURLToPath } from 'url';
 
@@ -31,16 +32,25 @@ header = header.replace('<%= YEAR %>', new Date().getFullYear());
 export const processCSS = async (cssPath) => {
     let wrappedCSS = header;
     const originCSS = fs.readFileSync(cssPath, 'utf8');
-    const processedCSS = await postcss(postCSSPlugins(cssPath, true))
-        .process(originCSS, {
-            from: cssPath,
-        })
-        .then((result) => {
-            return result;
-        })
-        .catch((error) => {
-            console.error(error?.message || error);
-        });
+    const { code: processedCSS } = transform({
+        code: Buffer.from(originCSS),
+        minify: true,
+    });
+    // const processedCSS = await postcss(postCSSPlugins(cssPath, true))
+    //     .process(originCSS, {
+    //         from: cssPath,
+    //     })
+    //     .then((result) => {
+    //         return result;
+    //     })
+    //     .catch((error) => {
+    //         console.error(error?.message || error);
+    //     });
     wrappedCSS += wrapCSSResult(processedCSS);
+    fs.writeFileSync(
+        cssPath.replace('.css', '.min.css'),
+        processedCSS,
+        'utf-8'
+    );
     fs.writeFileSync(cssPath + '.ts', wrappedCSS, 'utf-8');
 };

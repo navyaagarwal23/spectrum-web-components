@@ -1,0 +1,1 @@
+@import "./spectrum-menu.css";:host{width:var(--swc-menu-width);flex-direction:column;display:inline-flex}:host(:focus){outline:none}::slotted(*){flex-shrink:0}

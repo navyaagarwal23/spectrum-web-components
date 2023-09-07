@@ -360,13 +360,6 @@ governing permissions and limitations under the License.
         var(--spectrum-menu-item-label-inline-edge-to-content)
     );
 }
-li:not(::slotted(sp-menu-item), .menu-divider) {
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
 .spectrum-Menu-back.focus-visible {
     box-shadow: inset
         calc(

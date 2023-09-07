@@ -12,6 +12,25 @@ governing permissions and limitations under the License.
 
 import { Theme } from './src/Theme.js';
 
-import coreStyles from './src/theme.css.js';
+import coreSpectrumGlobal from '@spectrum-web-components/styles/spectrum-core-global.min.css' assert { type: 'css' };
+import coreGlobal from '@spectrum-web-components/styles/core-global.min.css' assert { type: 'css' };
+import globalVars from '@spectrum-web-components/styles/tokens/global-vars.min.css' assert { type: 'css' };
+import globalSpectrumVars from '@spectrum-web-components/styles/tokens/spectrum/global-vars.min.css' assert { type: 'css' };
+import globalCustom from '@spectrum-web-components/styles/tokens/spectrum/custom-vars.min.css' assert { type: 'css' };
+import typography from '@spectrum-web-components/styles/typography.min.css' assert { type: 'css' };
+import coreStyles from './src/theme.min.css' assert { type: 'css' };
+// @import url('@spectrum-web-components/styles/core-global.css');
+// @import url('@spectrum-web-components/styles/tokens/global-vars.css');
+// @import url('@spectrum-web-components/styles/tokens/spectrum/global-vars.css');
+// @import url('@spectrum-web-components/styles/tokens/spectrum/custom-vars.css');
+// @import url('@spectrum-web-components/styles/typography.css');
 
-Theme.registerThemeFragment('spectrum', 'theme', coreStyles);
+Theme.registerThemeFragment('spectrum', 'theme', [
+    coreSpectrumGlobal,
+    coreGlobal,
+    globalVars,
+    globalSpectrumVars,
+    globalCustom,
+    typography,
+    coreStyles,
+]);

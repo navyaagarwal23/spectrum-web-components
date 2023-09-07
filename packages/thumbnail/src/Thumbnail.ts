@@ -20,7 +20,8 @@ import {
 import { property } from '@spectrum-web-components/base/src/decorators.js';
 import opacityCheckerboardStyles from '@spectrum-web-components/opacity-checkerboard/src/opacity-checkerboard.css.js';
 
-import styles from './thumbnail.css.js';
+import stylesDefault from './spectrum-thumbnail.min.css' assert { type: 'css' };
+import stylesOveride from './thumbnail.min.css' assert { type: 'css' };
 
 const validSizes = [
     '50',
@@ -48,7 +49,7 @@ const defaultSize = validSizes[6];
 
 export class Thumbnail extends SpectrumElement {
     public static override get styles(): CSSResultArray {
-        return [opacityCheckerboardStyles, styles];
+        return [opacityCheckerboardStyles, stylesDefault, stylesOveride];
     }
 
     @property({ type: String, reflect: true })

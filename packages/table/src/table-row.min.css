@@ -1,0 +1,1 @@
+@import "./spectrum-table-row.css";:host,:host([role=row]){width:100%;display:flex}:host(:first-child) ::slotted(*){border-block-start:none}:host(:last-child) ::slotted(*){border-block-end:none}::slotted(:first-child){border-inline-start:none}::slotted(:last-child){border-inline-end:none}

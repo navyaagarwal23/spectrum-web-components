@@ -51,7 +51,7 @@ import { noop } from './AbstractOverlay.js';
 import { VirtualTrigger } from './VirtualTrigger.js';
 import { PlacementController } from './PlacementController.js';
 
-import styles from './overlay.css.js';
+import styles from './overlay.min.css' assert { type: 'css' };
 
 const LONGPRESS_DURATION = 300;
 const HOVER_DELAY = 300;

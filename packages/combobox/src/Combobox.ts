@@ -35,10 +35,12 @@ import '@spectrum-web-components/menu/sp-menu-item.js';
 import '@spectrum-web-components/picker-button/sp-picker-button.js';
 import { Textfield } from '@spectrum-web-components/textfield';
 import type { Tooltip } from '@spectrum-web-components/tooltip';
+import type { Menu, MenuItem } from '@spectrum-web-components/menu';
 
-import styles from './combobox.css.js';
 import chevronStyles from '@spectrum-web-components/icon/src/spectrum-icon-chevron.css.js';
-import { Menu, MenuItem } from '@spectrum-web-components/menu';
+import stylesDefault from './spectrum-combobox.min.css' assert { type: 'css' };
+import stylesOveride from './combobox.min.css' assert { type: 'css' };
+
 
 export type ComboboxOption = {
     value: string;
@@ -52,7 +54,7 @@ export type ComboboxOption = {
  */
 export class Combobox extends Textfield {
     public static override get styles(): CSSResultArray {
-        return [...super.styles, styles, chevronStyles];
+        return [...super.styles, stylesDefault, stylesOveride, chevronStyles];
     }
 
     /**

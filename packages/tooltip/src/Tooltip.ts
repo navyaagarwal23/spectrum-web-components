@@ -27,9 +27,10 @@ import type {
     OverlayOpenCloseDetail,
     Placement,
 } from '@spectrum-web-components/overlay';
-
-import tooltipStyles from './tooltip.css.js';
 import { focusableSelector } from '@spectrum-web-components/shared/src/focusable-selectors.js';
+
+import stylesDefault from './spectrum-tooltip.min.css' assert { type: 'css' };
+import stylesOveride from './tooltip.min.css' assert { type: 'css' };
 
 class TooltipOpenable extends HTMLElement {
     constructor() {
@@ -116,7 +117,7 @@ if (!customElements.get('sp-tooltip-openable')) {
  */
 export class Tooltip extends SpectrumElement {
     public static override get styles(): CSSResultArray {
-        return [tooltipStyles];
+        return [stylesDefault, stylesOveride];
     }
 
     /**

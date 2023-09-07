@@ -22,7 +22,9 @@ import { property } from '@spectrum-web-components/base/src/decorators.js';
 
 import { ObserveSlotText } from '@spectrum-web-components/shared/src/observe-slot-text.js';
 import { ObserveSlotPresence } from '@spectrum-web-components/shared/src/observe-slot-presence.js';
-import styles from './badge.css.js';
+
+import stylesDefault from './spectrum-badge.min.css' assert { type: 'css' };
+import stylesOveride from './badge.min.css' assert { type: 'css' };
 
 export const BADGE_VARIANTS = [
     'accent',
@@ -62,7 +64,7 @@ export class Badge extends SizedMixin(
     }
 ) {
     public static override get styles(): CSSResultArray {
-        return [styles];
+        return [stylesDefault, stylesOveride];
     }
 
     @property({ reflect: true })

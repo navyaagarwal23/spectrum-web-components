@@ -1,0 +1,1 @@
+@import "./spectrum-swatch.css";.fill:before{background:var(--spectrum-picked-color,transparent)}:host([border=none]) .fill:before{background:var(--spectrum-picked-color,transparent)}:host .is-image .fill:before{background:0 0}

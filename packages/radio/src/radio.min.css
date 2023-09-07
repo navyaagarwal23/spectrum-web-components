@@ -1,0 +1,1 @@
+@import "./spectrum-radio.css";:host(:focus){outline:none}:host([disabled]){pointer-events:none}:host([dir=rtl]) #button:after{transform:translate(50%)translateY(-50%)}

@@ -68,7 +68,7 @@
         "storybook:quick": "run-p build:watch storybook:run",
         "storybook:run": "web-dev-server --config wds-storybook.config.js",
         "test": "yarn test:focus unit",
-        "test:bench": "yarn build:tests && node test/benchmark/cli.js",
+        "test:bench": "node test/benchmark/cli.js",
         "test:changed": "node ./tasks/test-changes.js",
         "test:ci": "yarn test:start",
         "test:create": "wireit",
@@ -162,6 +162,7 @@
         "gh-pages": "^6.0.0",
         "gunzip-maybe": "^1.4.2",
         "husky": "^8.0.3",
+        "koa-compress": "^5.1.1",
         "latest-version": "^7.0.0",
         "lerna": "^6.6.2",
         "lightningcss": "^1.19.0",
@@ -204,6 +205,9 @@
         "wireit": "^0.14.3",
         "yargs": "^17.2.1"
     },
+    "resolutions": {
+        "@babel/types": "7.23.6"
+    },
     "wireit": {
         "build:css:watch": {
             "command": "node ./tasks/watch-css.js",
@@ -215,13 +219,19 @@
                 "process-spectrum"
             ],
             "files": [
+                "packages/*/exports.json",
+                "packages/*/src/spectrum-config.js",
                 "packages/**/*.css",
+                "tools/*/exports.json",
+                "tools/*/src/spectrum-config.js",
                 "tools/**/*.css",
                 "scripts/css-processing.cjs"
             ],
             "output": [
                 "packages/**/*.css.ts",
-                "tools/**/*.css.ts"
+                "packages/**/*.min.css",
+                "tools/**/*.css.ts",
+                "tools/**/*.min.css"
             ],
             "clean": "if-file-deleted"
         },

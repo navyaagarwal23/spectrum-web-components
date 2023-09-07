@@ -33,8 +33,9 @@ import { Focusable } from '@spectrum-web-components/shared/src/focusable.js';
 import '@spectrum-web-components/icons-ui/icons/sp-icon-checkmark100.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
 
-import textfieldStyles from './textfield.css.js';
-import checkmarkStyles from '@spectrum-web-components/icon/src/spectrum-icon-checkmark.css.js';
+import checkmarkStyles from '@spectrum-web-components/icon/src/spectrum-icon-checkmark.min.css' assert { type: 'css' };
+import stylesDefault from './spectrum-textfield.min.css' assert { type: 'css' };
+import stylesOveride from './textfield.min.css' assert { type: 'css' };
 
 const textfieldTypes = ['text', 'url', 'tel', 'email', 'password'] as const;
 export type TextfieldType = typeof textfieldTypes[number];
@@ -49,7 +50,7 @@ export class TextfieldBase extends ManageHelpText(
     })
 ) {
     public static override get styles(): CSSResultArray {
-        return [textfieldStyles, checkmarkStyles];
+        return [stylesDefault, stylesOveride, checkmarkStyles];
     }
 
     @state()

@@ -25,8 +25,11 @@ import '@spectrum-web-components/underlay/sp-underlay.js';
 import { firstFocusableIn } from '@spectrum-web-components/shared/src/first-focusable-in.js';
 import { MatchMediaController } from '@spectrum-web-components/reactive-controllers/src/MatchMedia.js';
 
-import modalStyles from '@spectrum-web-components/modal/src/modal.css.js';
-import styles from './tray.css.js';
+import stylesModalDefault from '@spectrum-web-components/modal/src/spectrum-modal.min.css' assert { type: 'css' };
+import stylesModalOveride from '@spectrum-web-components/modal/src/modal.min.css' assert { type: 'css' };
+import stylesWrapperDefault from './spectrum-tray-wrapper.min.css' assert { type: 'css' };
+import stylesDefault from './spectrum-tray.min.css' assert { type: 'css' };
+import stylesOveride from './tray.min.css' assert { type: 'css' };
 
 /**
  * @element sp-tray
@@ -37,7 +40,13 @@ import styles from './tray.css.js';
  */
 export class Tray extends SpectrumElement {
     public static override get styles(): CSSResultArray {
-        return [modalStyles, styles];
+        return [
+            stylesModalDefault,
+            stylesModalOveride,
+            stylesWrapperDefault,
+            stylesDefault,
+            stylesOveride,
+        ];
     }
 
     @property({ type: Boolean, reflect: true })

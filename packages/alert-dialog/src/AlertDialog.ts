@@ -20,10 +20,14 @@ import {
     query,
 } from '@spectrum-web-components/base/src/decorators.js';
 import '@spectrum-web-components/button/sp-button.js';
+import '@spectrum-web-components/button-group/sp-button-group.js';
+import '@spectrum-web-components/divider/sp-divider.js';
 import { FocusVisiblePolyfillMixin } from '@spectrum-web-components/shared';
 import { conditionAttributeWithId } from '@spectrum-web-components/base/src/condition-attribute-with-id.js';
 import { ResizeController } from '@lit-labs/observers/resize-controller.js';
-import alertStyles from './alert-dialog.css.js';
+
+import stylesDefault from './spectrum-alert-dialog.min.css' assert { type: 'css' };
+import stylesOveride from './alert-dialog.min.css' assert { type: 'css' };
 
 export type AlertDialogVariants =
     | 'confirmation'
@@ -64,7 +68,7 @@ function gatherAppliedIdsFromSlottedChildren(
 }
 export class AlertDialog extends FocusVisiblePolyfillMixin(SpectrumElement) {
     public static override get styles(): CSSResultArray {
-        return [alertStyles];
+        return [stylesDefault, stylesOveride];
     }
 
     @query('.content')

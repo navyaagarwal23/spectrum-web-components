@@ -287,7 +287,11 @@ export class Theme extends HTMLElement implements ThemeKindProvider {
                 style = getStyle(kindFragments, <FragmentName>name, kind);
             }
             if (style) {
-                acc.push(style);
+                if (Array.isArray(style)) {
+                    acc.push(...style);
+                } else {
+                    acc.push(style);
+                }
             }
             return acc;
         }, [] as CSSResultGroup[]);
@@ -482,7 +486,9 @@ export class Theme extends HTMLElement implements ThemeKindProvider {
             const styleSheets: CSSStyleSheet[] = [];
             for (const style of styles) {
                 styleSheets.push(
-                    (style as CSSResult).styleSheet as CSSStyleSheet
+                    style instanceof CSSStyleSheet
+                        ? style
+                        : ((style as CSSResult).styleSheet as CSSStyleSheet)
                 );
             }
             this.shadowRoot.adoptedStyleSheets = styleSheets;

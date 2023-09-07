@@ -1,0 +1,1 @@
+@import "./spectrum-link.css";:host{display:inline}:host(:focus){outline:none}:host([href]) a:focus-visible{text-decoration:underline double}

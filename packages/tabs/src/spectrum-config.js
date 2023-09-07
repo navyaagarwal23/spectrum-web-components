@@ -28,6 +28,16 @@ const config = {
             outPackage: 'tabs',
             fileName: 'tabs',
             components: [
+                // Default to `size='m'` without needing the attribute
+                converter.classToHost('spectrum-Tabs--sizeM'),
+                ...converter.enumerateAttributes(
+                    [
+                        ['spectrum-Tabs--sizeS', 's'],
+                        ['spectrum-Tabs--sizeL', 'l'],
+                        ['spectrum-Tabs--sizeXL', 'xl'],
+                    ],
+                    'size'
+                ),
                 {
                     exactSelector: true,
                     find: [builder.class('spectrum-Tabs--quiet')],
@@ -209,14 +219,13 @@ const config = {
                 },
             ],
             excludeByComponents: [
+                builder.class('is-disabled'),
+                builder.pseudoClass('focus-visible'),
+                builder.pseudoClass('focus'),
+                builder.pseudoElement('before'),
                 builder.class('spectrum-Tabs-itemLabel'),
                 builder.class('spectrum-Icon'),
                 builder.pseudoClass('hover'),
-                {
-                    type: 'class',
-                    name: 'regex',
-                    regex: /spectrum-Tabs--size/,
-                },
             ],
             excludeByWholeSelector: [
                 [builder.class('spectrum-Tabs-item')],

@@ -18,7 +18,8 @@ import {
 } from '@spectrum-web-components/base';
 import { property } from '@spectrum-web-components/base/src/decorators.js';
 
-import bannerStyles from './banner.css.js';
+import stylesDefault from './spectrum-banner.min.css' assert { type: 'css' };
+import stylesOveride from './banner.min.css' assert { type: 'css' };
 
 /**
  * @element sp-banner
@@ -37,7 +38,7 @@ export class Banner extends SpectrumElement {
     public corner = false;
 
     public static override get styles(): CSSResultArray {
-        return [bannerStyles];
+        return [stylesDefault, stylesOveride];
     }
 
     protected override render(): TemplateResult {

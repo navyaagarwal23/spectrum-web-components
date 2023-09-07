@@ -1,0 +1,1 @@
+@import "./spectrum-table-checkbox-cell.css";:host{block-size:auto;border-radius:0;flex:0;align-items:center;display:flex}:host(:not([head-cell])),:host([head-cell]){block-size:auto;inline-size:auto;display:flex}:host([selects-single]) sp-checkbox{visibility:hidden}

@@ -25,7 +25,6 @@ import {
 } from '@spectrum-web-components/base/src/decorators.js';
 import type { Focusable } from '@spectrum-web-components/shared';
 import '@spectrum-web-components/icons-ui/icons/sp-icon-asterisk100.js';
-import asteriskIconStyles from '@spectrum-web-components/icon/src/spectrum-icon-asterisk.css.js';
 import {
     conditionAttributeWithId,
     conditionAttributeWithoutId,
@@ -35,7 +34,9 @@ import {
     elementResolverUpdatedSymbol,
 } from '@spectrum-web-components/reactive-controllers/src/ElementResolution.js';
 
-import styles from './field-label.css.js';
+import asteriskIconStyles from '@spectrum-web-components/icon/src/spectrum-icon-asterisk.min.css' assert { type: 'css' };
+import stylesDefault from './spectrum-field-label.min.css' assert { type: 'css' };
+import stylesOveride from './field-label.min.css' assert { type: 'css' };
 
 type AcceptsFocusVisisble = HTMLElement & { forceFocusVisible?(): void };
 type Labelable = Focusable & {
@@ -51,7 +52,7 @@ export class FieldLabel extends SizedMixin(SpectrumElement, {
     noDefaultSize: true,
 }) {
     public static override get styles(): CSSResultArray {
-        return [styles, asteriskIconStyles];
+        return [stylesDefault, stylesOveride, asteriskIconStyles];
     }
 
     /**

@@ -18,8 +18,6 @@ import {
 import { property } from '@spectrum-web-components/base/src/decorators.js';
 import { when } from '@spectrum-web-components/base/src/directives.js';
 import { LikeAnchor } from '@spectrum-web-components/shared/src/like-anchor.js';
-import coachmarkStyles from './coachmark.css.js';
-import chevronStyles from '@spectrum-web-components/icon/src/spectrum-icon-chevron.css.js';
 import '@spectrum-web-components/icons-ui/icons/sp-icon-chevron200.js';
 import { Popover } from '@spectrum-web-components/popover';
 import { join } from 'lit/directives/join.js';
@@ -32,6 +30,11 @@ import '@spectrum-web-components/button/sp-button.js';
 import '@spectrum-web-components/button-group/sp-button-group.js';
 import '@spectrum-web-components/quick-actions/sp-quick-actions.js';
 
+
+import chevronStyles from '@spectrum-web-components/icon/src/spectrum-icon-chevron.css.js';
+import stylesDefault from './spectrum-coachmark.min.css' assert { type: 'css' };
+import stylesOveride from './coachmark.min.css' assert { type: 'css' };
+
 /**
  * @element sp-coachmark
  * @fires primary - Announces that the "primary" button has been clicked.
@@ -43,7 +46,7 @@ import '@spectrum-web-components/quick-actions/sp-quick-actions.js';
  */
 export class Coachmark extends LikeAnchor(Popover) {
     public static override get styles(): CSSResultArray {
-        return [...super.styles, coachmarkStyles, chevronStyles];
+        return [...super.styles, stylesDefault, stylesOveride, chevronStyles];
     }
     @property({ type: Object })
     public item?: CoachmarkItem;

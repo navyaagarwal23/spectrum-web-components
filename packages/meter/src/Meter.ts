@@ -28,7 +28,9 @@ import { getLabelFromSlot } from '@spectrum-web-components/shared/src/get-label-
 import { ObserveSlotText } from '@spectrum-web-components/shared/src/observe-slot-text.js';
 import { LanguageResolutionController } from '@spectrum-web-components/reactive-controllers/src/LanguageResolution.js';
 import '@spectrum-web-components/field-label/sp-field-label.js';
-import styles from './meter.css.js';
+
+import stylesDefault from './spectrum-meter.min.css' assert { type: 'css' };
+import stylesOveride from './meter.min.css' assert { type: 'css' };
 
 export const meterVariants = ['positive', 'notice', 'negative'];
 
@@ -43,7 +45,7 @@ export class Meter extends SizedMixin(ObserveSlotText(SpectrumElement, ''), {
     noDefaultSize: true,
 }) {
     public static override get styles(): CSSResultArray {
-        return [styles];
+        return [stylesDefault, stylesOveride];
     }
 
     @property({ type: Number })
