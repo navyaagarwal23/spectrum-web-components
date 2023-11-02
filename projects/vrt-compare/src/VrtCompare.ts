@@ -386,13 +386,20 @@ export class VrtCompare extends ObserveSlotPresence(SpectrumElement, [
             }
             ::slotted(img) {
                 display: flex;
+                pointer-events: none;
             }
             sp-action-group[selects] {
                 margin-bottom: 1em;
                 justify-content: center;
                 position: fixed;
-                top: calc(var(--spectrum-global-dimension-size-200) / 2);
-                right: calc(var(--spectrum-global-dimension-size-200) / 2);
+                top: calc(
+                    var(--spectrum-scale-factor, 1) *
+                        var(--spectrum-spacing-100)
+                );
+                right: calc(
+                    var(--spectrum-scale-factor, 1) *
+                        var(--spectrum-spacing-100)
+                );
             }
             .sidebyside {
                 display: flex;
@@ -430,9 +437,13 @@ export class VrtCompare extends ObserveSlotPresence(SpectrumElement, [
             }
             .zoom-controls {
                 position: fixed;
-                bottom: calc(var(--spectrum-global-dimension-size-200) / 2);
+                bottom: calc(
+                    var(--spectrum-scale-factor, 1) *
+                        var(--spectrum-spacing-100)
+                );
                 left: calc(
-                    240px + 48px + var(--spectrum-global-dimension-size-200) / 2
+                    240px + 48px + var(--spectrum-scale-factor, 1) *
+                        var(--spectrum-spacing-100)
                 );
                 z-index: 1;
             }

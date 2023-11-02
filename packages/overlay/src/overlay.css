@@ -15,14 +15,13 @@ governing permissions and limitations under the License.
     pointer-events: none;
 
     /**
-     * duplicate --spectrum-overlay-animation-distance, which is out of scope
-     * rather than over write so we continue to get new values from Spectrum CSS
-     * if they are provided in the future.
+     * Duplicate --spectrum-overlay-animation-distance, which is out of scope.
+     * Currently is is statically 6px across Modal, Popover, Quick Actions, Toast,
+     * Tooltip, and Underlay, so that is repeated here. `::has-slotted()` or reaching
+     * into the slotted content with JS would be needed if it were customized per 
+     * individual Spectrum pattern.
      **/
-    --swc-overlay-animation-distance: var(
-        --spectrum-picker-m-texticon-popover-offset-y,
-        var(--spectrum-global-dimension-size-75)
-    );
+    --swc-overlay-animation-distance: 6px;
 }
 
 .dialog {

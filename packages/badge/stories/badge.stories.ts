@@ -92,38 +92,38 @@ export const NonSemantic = (): TemplateResult => {
     return html`
         <sp-badge
             variant="seafoam"
-            style="--mod-badge-background-color-default: var(--spectrum-global-color-static-seafoam-600)"
+            style="--mod-badge-background-color-default: var(--spectrum-seafoam-600)"
         >
             Seafoam
         </sp-badge>
         <sp-badge
             variant="indigo"
-            style="--mod-badge-background-color-default: var(--spectrum-global-color-static-indigo-600)"
+            style="--mod-badge-background-color-default: var(--spectrum-indigo-600)"
         >
             Indigo
         </sp-badge>
         <sp-badge
             variant="purple"
-            style="--mod-badge-background-color-default: var(--spectrum-global-color-static-purple-600)"
+            style="--mod-badge-background-color-default: var(--spectrum-purple-600)"
         >
             Purple
         </sp-badge>
         <sp-badge
             variant="fuchsia"
-            style="--mod-badge-background-color-default: var(--spectrum-global-color-static-fuchsia-600)"
+            style="--mod-badge-background-color-default: var(--spectrum-fuchsia-600)"
         >
             Fuchsia
         </sp-badge>
         <sp-badge
             variant="magenta"
-            style="--mod-badge-background-color-default: var(--spectrum-global-color-static-magenta-600)"
+            style="--mod-badge-background-color-default: var(--spectrum-magenta-600)"
         >
             Magenta
         </sp-badge>
         <sp-badge
             variant="yellow"
             static="black"
-            style="--mod-badge-background-color-default: var(--spectrum-alias-background-color-yellow-default)"
+            style="--mod-badge-background-color-default: var(--spectrum-yellow-600)"
         >
             Yellow
         </sp-badge>

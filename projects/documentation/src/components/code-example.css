@@ -16,11 +16,11 @@ governing permissions and limitations under the License.
     margin: 1rem 0 2rem;
     flex-direction: column;
     border-radius: var(--code-example-border-radius);
-    border: 1px solid var(--spectrum-global-color-gray-100);
+    border: 1px solid var(--spectrum-gray-100);
     width: 100%;
     position: relative;
 
-    --code-example-border-radius: var(--spectrum-alias-border-radius-regular);
+    --code-example-border-radius: var(--spectrum-alias-border-radius-regular, 4px);
 }
 
 .demo-example {
@@ -29,11 +29,11 @@ governing permissions and limitations under the License.
     max-width: 100%;
     overflow: auto;
     flex: 1;
-    padding: var(--spectrum-global-dimension-size-400)
-        var(--spectrum-global-dimension-size-500);
+    padding: var(--spectrum-global-dimension-size-400, 32px)
+        var(--spectrum-global-dimension-size-500, 40px);
     border-radius: var(--code-example-border-radius)
         var(--code-example-border-radius) 0 0;
-    background: var(--spectrum-global-color-gray-100);
+    background: var(--spectrum-gray-100);
 }
 
 .demo-example .flex {
@@ -42,8 +42,8 @@ governing permissions and limitations under the License.
 
 @media (max-width: 768px) {
     .demo-example {
-        padding: var(--spectrum-global-dimension-size-200)
-            var(--spectrum-global-dimension-size-200);
+        padding: var(--spectrum-global-dimension-size-200, 16px)
+            var(--spectrum-global-dimension-size-200, 16px);
     }
 }
 
@@ -53,8 +53,8 @@ governing permissions and limitations under the License.
     grid-template-rows: minmax(60px, 100%);
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 6px 6px;
-    border-top: 1px solid var(--spectrum-global-color-gray-100);
-    background: var(--spectrum-global-color-gray-75);
+    border-top: 1px solid var(--spectrum-gray-100);
+    background: var(--spectrum-gray-75);
     line-height: 1.3em;
     position: relative;
     overflow: auto;
@@ -62,7 +62,7 @@ governing permissions and limitations under the License.
 
 pre {
     grid-area: 1/1/1/1;
-    padding-bottom: calc(0.75rem + var(--spectrum-global-dimension-size-400));
+    padding-bottom: calc(0.75rem + var(--spectrum-global-dimension-size-400, 32px));
 }
 
 .copy-holder {
@@ -89,11 +89,7 @@ pre {
     );
     font-style: var(
         --spectrum-code-xs-text-font-style,
-        var(--spectrum-global-font-style-regular)
-    );
-    letter-spacing: var(
-        --spectrum-code-xs-text-letter-spacing,
-        var(--spectrum-global-font-letter-spacing-none)
+        var(--spectrum-font-style)
     );
     margin-top: 0;
     margin-bottom: 0;

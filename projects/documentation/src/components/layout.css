@@ -35,8 +35,8 @@ docs-side-nav:not(:defined) {
         top: 0;
         left: 0;
         padding: 0 24px 24px;
-        background-color: var(--spectrum-global-color-gray-75);
-        max-width: var(--spectrum-global-dimension-size-2400);
+        background-color: var(--spectrum-gray-75);
+        max-width: var(--spectrum-global-dimension-size-2400, 192px);
         max-height: 100vh;
         height: 100vh;
         display: flex;
@@ -58,13 +58,13 @@ docs-side-nav:not(:defined) {
 #body {
     display: grid;
     grid-template-columns: auto calc(
-            100% - var(--spectrum-global-dimension-size-2400) -
-                var(--spectrum-global-dimension-size-300) -
-                var(--spectrum-global-dimension-size-300)
+            100% - var(--spectrum-global-dimension-size-2400, 192px) -
+                var(--spectrum-global-dimension-size-300, 24px) -
+                var(--spectrum-global-dimension-size-300, 24px)
         );
     flex: 1 1 auto;
-    color: var(--spectrum-global-color-gray-800);
-    background-color: var(--spectrum-global-color-gray-50);
+    color: var(--spectrum-gray-800);
+    background-color: var(--spectrum-gray-50);
 }
 
 @media screen and (max-width: 960px) {
@@ -75,8 +75,8 @@ docs-side-nav:not(:defined) {
 }
 
 #page {
-    padding: var(--spectrum-global-dimension-size-500)
-        var(--spectrum-global-dimension-size-700);
+    padding: var(--spectrum-global-dimension-size-500, 40px)
+        var(--spectrum-global-dimension-size-700, 56px);
     max-width: 1080px;
     margin-left: auto;
     margin-right: auto;
@@ -98,8 +98,8 @@ docs-side-nav:not(:defined) {
 
 @media screen and (max-width: 960px) {
     #page {
-        padding: var(--spectrum-global-dimension-size-100)
-            var(--spectrum-global-dimension-size-300);
+        padding: var(--spectrum-global-dimension-size-100, 8px)
+            var(--spectrum-global-dimension-size-300, 24px);
     }
 
     .manage-theme {
@@ -120,22 +120,22 @@ header {
     position: sticky;
     top: 0;
     left: 0;
-    min-height: var(--spectrum-global-dimension-size-600);
-    border-bottom: 1px solid var(--spectrum-global-color-gray-200);
+    min-height: var(--spectrum-global-dimension-size-600, 48px);
+    border-bottom: 1px solid var(--spectrum-gray-200);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--spectrum-global-color-gray-50);
+    background-color: var(--spectrum-gray-50);
     top: 0px;
     right: 0px;
     left: 0px;
     padding-inline: 8px;
     z-index: 2;
 
-    --spectrum-actionbutton-height: var(--spectrum-global-dimension-size-500);
+    --spectrum-actionbutton-height: var(--spectrum-global-dimension-size-500, 40px);
     --spectrum-actionbutton-min-width: var(
-        --spectrum-global-dimension-size-500
+        --spectrum-global-dimension-size-500, 40px
     );
     --spectrum-alias-workflow-icon-size: 22px;
 }
@@ -146,7 +146,7 @@ header svg {
 }
 
 .theme-control {
-    margin-inline-start: var(--spectrum-global-dimension-size-400);
+    margin-inline-start: var(--spectrum-global-dimension-size-400, 32px);
 }
 
 sp-field-label:not(:defined) {
@@ -157,11 +157,11 @@ sp-field-label:not(:defined) {
             ) +
             var(
                 --spectrum-fieldlabel-m-padding-top,
-                var(--spectrum-global-dimension-size-50)
+                var(--spectrum-global-dimension-size-50, 4px)
             ) +
             var(
                 --spectrum-fieldlabel-m-padding-bottom,
-                var(--spectrum-global-dimension-size-65)
+                var(--spectrum-global-dimension-size-65, 5px)
             )
     );
     min-width: 70px;
@@ -195,27 +195,27 @@ sp-picker:not(:defined) sp-menu-item {
 }
 
 .alerts sp-toast {
-    margin: 0 auto var(--spectrum-global-dimension-size-300);
+    margin: 0 auto var(--spectrum-global-dimension-size-300, 24px);
 }
 
 #logo {
     outline: none;
     margin-bottom: -11px;
-    padding: var(--spectrum-global-dimension-size-350)
-        var(--spectrum-global-dimension-size-300);
+    padding: var(--spectrum-global-dimension-size-350, 28px)
+        var(--spectrum-global-dimension-size-300, 24px);
     border-radius: 4px;
     display: flex;
     flex-direction: row;
-    color: var(--spectrum-global-color-gray-800);
+    color: var(--spectrum-gray-800);
     text-decoration: none;
-    width: var(--spectrum-global-dimension-size-2400);
+    width: var(--spectrum-global-dimension-size-2400, 192px);
 }
 
 #logo docs-spectrum-logo {
     width: 36px;
     height: 31px;
     display: block;
-    margin-right: var(--spectrum-global-dimension-size-200);
+    margin-right: var(--spectrum-global-dimension-size-200, 16px);
     margin-bottom: 12px;
     flex-shrink: 0;
 }
@@ -230,7 +230,7 @@ sp-picker:not(:defined) sp-menu-item {
     margin: -3px 0 0;
     font-family: var(
         --spectrum-alias-body-text-font-family,
-        var(--spectrum-global-font-family-base)
+        var(--spectrum-font-family)
     );
 }
 
@@ -248,18 +248,18 @@ aside {
     z-index: 10;
     top: 0;
     right: 0;
-    background-color: var(--spectrum-global-color-gray-75);
-    width: var(--spectrum-global-dimension-size-2400);
+    background-color: var(--spectrum-gray-75);
+    width: var(--spectrum-global-dimension-size-2400, 192px);
     transition: transform
             var(
                 --spectrum-dialog-confirm-background-entry-animation-duration,
-                var(--spectrum-global-animation-duration-600)
+                var(--spectrum-animation-duration-600)
             )
             cubic-bezier(0, 0, 0.4, 1),
         visibility 0s linear
             var(
                 --spectrum-dialog-confirm-background-entry-animation-duration,
-                var(--spectrum-global-animation-duration-600)
+                var(--spectrum-animation-duration-600)
             );
     visibility: visible;
 }
@@ -284,7 +284,7 @@ aside header {
 }
 
 aside .theme-control {
-    margin: 0 0 var(--spectrum-spacing-300);
+    margin: 0 0 var(--spectrum-spacing-300, 24px);
 }
 
 aside.show {

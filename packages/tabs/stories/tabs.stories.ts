@@ -71,11 +71,9 @@ export const Default = (args: Properties): TemplateResult => {
             }
             sp-tab-panel {
                 grid-area: 2/1/2/1;
-                transition: opacity
-                        var(--spectrum-global-animation-duration-300)
+                transition: opacity var(--spectrum-animation-duration-300)
                         ease-in-out,
-                    transform var(--spectrum-global-animation-duration-300)
-                        ease-in-out;
+                    transform var(--spectrum-animation-duration-300) ease-in-out;
             }
             sp-tab-panel:not([selected]) {
                 display: unset;
@@ -85,15 +83,13 @@ export const Default = (args: Properties): TemplateResult => {
                 transform: translateY(
                     var(
                         --spectrum-dropdown-flyout-menu-offset-y,
-                        var(--spectrum-global-dimension-size-75)
+                        var(--spectrum-global-dimension-size-75, 6px)
                     )
                 );
-                transition: opacity
-                        var(--spectrum-global-animation-duration-300)
+                transition: opacity var(--spectrum-animation-duration-300)
                         ease-in-out,
-                    transform var(--spectrum-global-animation-duration-300)
-                        ease-in-out,
-                    height 0s ease var(--spectrum-global-animation-duration-300);
+                    transform var(--spectrum-animation-duration-300) ease-in-out,
+                    height 0s ease var(--spectrum-animation-duration-300);
             }
         </style>
         <sp-tabs
