@@ -138,6 +138,11 @@ export default {
             browsers: [chromium, firefox, webkit],
         },
         {
+            name: 'memory',
+            files: ['{packages,tools}/**/*-memory.test.js'],
+            browsers: [chromiumWithMemoryTooling],
+        },
+        {
             name: 'unit-ci',
         },
     ],
