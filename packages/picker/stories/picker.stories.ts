@@ -400,7 +400,9 @@ export const Open = (args: StoryArgs): TemplateResult => {
                 <sp-menu-item disabled>Make Work Path</sp-menu-item>
             </sp-picker>
         </fieldset>
-        <fieldset>
+        <fieldset
+            style="position: relative; z-index: 10; background: var(--spectrum-global-color-gray-100);"
+        >
             <sp-field-label for="picker-closed">
                 Where do you live?
             </sp-field-label>

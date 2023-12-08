@@ -232,6 +232,7 @@ describe('Overlay Trigger - Longpress', () => {
             // Hover content opens, first.
             await open;
             open = oneEvent(this.el, 'sp-opened');
+            let closed = oneEvent(button, 'sp-closed');
             await sendMouse({
                 steps: [
                     {
@@ -241,6 +242,7 @@ describe('Overlay Trigger - Longpress', () => {
             });
             // Then, the longpress content opens.
             await open;
+            await closed;
             await nextFrame();
             await nextFrame();
             expect(this.content.open, 'opens for `pointerdown`').to.be.true;
@@ -262,7 +264,7 @@ describe('Overlay Trigger - Longpress', () => {
             await nextFrame();
             expect(this.content.open, 'stays open for `pointerup`').to.be.true;
             expect(await isOnTopLayer(this.content)).to.be.true;
-            const closed = oneEvent(button, 'sp-closed');
+            closed = oneEvent(button, 'sp-closed');
             await sendKeys({
                 press: 'Escape',
             });

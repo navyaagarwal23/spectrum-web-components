@@ -873,13 +873,30 @@ export class Overlay extends OverlayFeatures {
 
     protected handleBrowserClose(): void {
         if (
-            this.longpressState !== 'opening' &&
-            this.longpressState !== 'pressed'
+            this.longpressState === 'opening' ||
+            this.longpressState === 'pressed'
         ) {
-            this.open = false;
+            this.manuallyKeepOpen();
             return;
         }
-        this.manuallyKeepOpen();
+
+        // As available force the overlay back onto #top-layer while it completes its exit animation.
+        const isModal = this.type === 'modal' || this.type === 'page';
+        if (this.state !== 'closing' && (isModal || supportsPopover)) {
+            requestAnimationFrame(() => {
+                if (this.isConnected) {
+                    if (isModal) {
+                        this.dialogEl.showModal();
+                    } else {
+                        this.dialogEl.showPopover();
+                    }
+                }
+            });
+        }
+        if (this.state !== 'closed') {
+            this.state = 'closing';
+        }
+        this.open = false;
     }
 
     public override manuallyKeepOpen(): void {
