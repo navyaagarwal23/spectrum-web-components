@@ -286,6 +286,8 @@ describe('Submenu', () => {
             );
 
             await elementUpdated(el);
+            await nextFrame();
+            await nextFrame();
             const rootItem = el.querySelector('.root') as MenuItem;
             const submenu = el.querySelector('[slot="submenu"]') as Menu;
             const submenuItem = el.querySelector('.submenu-item-2') as MenuItem;
