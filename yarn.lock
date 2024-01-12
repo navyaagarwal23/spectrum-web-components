@@ -6711,9 +6711,9 @@
   integrity sha512-IDHdIvLKF75NJfv4EsPvonMXWtofhb2CaOGEOj8bk4RhPyz5HmFzjQmi6kYCqTBSXxe3cd2PtFu0BB0rx0looQ==
 
 "@spectrum-css/calendar@^4.0.9":
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/calendar/-/calendar-4.0.9.tgz#56674edc9567625a89fac1d8f17af1810c01ae54"
-  integrity sha512-E7OcOEeGuq9f3ie37j5gflh0k0aG7128QZY9g3LN0LoWp+c63h9q+e6Pm/Z7TlaSgCATT4p84g5/8lHwv+WX2A==
+  version "4.0.22"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/calendar/-/calendar-4.0.22.tgz#36ebfd5db75f91d6cc391a7e6122c469a047e32b"
+  integrity sha512-eFw5TA5mLM+ZQ9VO2SO72OvmFuTFFAh+fqrne/wc8Y+oN4j4+IeOuA1rWdb645moqSiLFeKomeq3yZLR16KxZg==
 
 "@spectrum-css/card@^6.2.2":
   version "6.2.2"
