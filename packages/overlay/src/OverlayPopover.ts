@@ -27,6 +27,10 @@ import {
 import type { AbstractOverlay } from './AbstractOverlay.js';
 import { userFocusableSelector } from '@spectrum-web-components/shared';
 
+const supportsAllowDiscrete = CSS.supports(
+    '(transition-behavior: allow-discrete) and (selector(:popover-open))'
+);
+
 function isOpen(el: HTMLElement): boolean {
     let popoverOpen = false;
     try {
@@ -122,7 +126,9 @@ export function OverlayPopover<T extends Constructor<AbstractOverlay>>(
             targetOpenState: boolean
         ): Promise<void> {
             await nextFrame();
-            await this.shouldHidePopover(targetOpenState);
+            if (!supportsAllowDiscrete) {
+                await this.shouldHidePopover(targetOpenState);
+            }
             await this.shouldShowPopover(targetOpenState);
             await nextFrame();
         }
