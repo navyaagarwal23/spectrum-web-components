@@ -11,10 +11,12 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
+import fs from 'fs';
+
 const latestURL = 'https://opensource.adobe.com/spectrum-web-components/';
 const mainURL = 'https://main--spectrum-web-components.netlify.app/';
 
-export const buildLighthouseComment = (links, manifest) => {
+export const buildLighthouseComment = (links, manifest, assertionResults) => {
     const report = {};
     Object.keys(links).forEach((key) => {
         if (key === mainURL) {
@@ -51,5 +53,7 @@ export const buildLighthouseComment = (links, manifest) => {
 [Lighthouse](https://github.com/GoogleChrome/lighthouse) scores comparing the documentation site built from the PR ("Branch") to that of the production documentation site ("Latest") and the build currently on <code>main</code> ("Main"). Higher scores are better, but *note that the SEO scores on Netlify URLs are artifically constrained to 0.92.*
 `;
 
+    const latestData = fs.readFileSync(branch.jsonPath, 'utf8');
+    console.log(latestData);
     return comment;
 };
