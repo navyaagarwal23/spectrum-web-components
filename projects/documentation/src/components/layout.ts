@@ -32,7 +32,6 @@ import type {
 import type { Picker } from '@spectrum-web-components/picker';
 import '@spectrum-web-components/button/sp-button.js';
 import '@spectrum-web-components/action-button/sp-action-button.js';
-import '@spectrum-web-components/menu/sp-menu-item.js';
 import '@spectrum-web-components/link/sp-link.js';
 import '@spectrum-web-components/divider/sp-divider.js';
 import '@spectrum-web-components/toast/sp-toast.js';
@@ -341,7 +340,7 @@ export class LayoutElement extends LitElement {
                       <sp-underlay
                           class="scrim"
                           ?open=${this.settings}
-                          @click=${this.toggleSettings}
+                          @close=${this.toggleSettings}
                           ?hidden=${!this.isNarrow}
                       ></sp-underlay>
                       <aside

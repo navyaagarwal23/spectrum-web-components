@@ -102,7 +102,7 @@
         "@netlify/build": "^29.1.0",
         "@open-wc/dev-server-hmr": "^0.2.0",
         "@open-wc/testing": "^3.2.0",
-        "@playwright/test": "^1.41.0",
+        "@playwright/test": "^1.41.2",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-json": "^6.0.1",
         "@rollup/plugin-node-resolve": "^15.2.3",
@@ -161,7 +161,7 @@
         "genversion": "^3.1.1",
         "gh-pages": "^6.0.0",
         "gunzip-maybe": "^1.4.2",
-        "husky": "^8.0.3",
+        "husky": "^9.0.10",
         "latest-version": "^7.0.0",
         "lerna": "^6.6.2",
         "lightningcss": "^1.19.0",
@@ -201,7 +201,7 @@
         "tar-stream": "^3.0.0",
         "terser": "^4.8.1",
         "typescript": "^4.7.2",
-        "wireit": "^0.14.1",
+        "wireit": "^0.14.3",
         "yargs": "^17.2.1"
     },
     "wireit": {
@@ -249,7 +249,9 @@
                 "tools/**/*.ts",
                 "!tools/**/*.d.ts",
                 "tasks/esbuild-packages.js",
-                "tasks/ts-tools.js"
+                "tasks/ts-tools.js",
+                "packages/**/exports.json",
+                "tools/**/exports.json"
             ],
             "output": [
                 "packages/**/*.js",
