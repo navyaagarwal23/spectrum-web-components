@@ -161,42 +161,12 @@ governing permissions and limitations under the License.
         var(--mod-tabs-color-selected, var(--spectrum-tabs-color-selected))
     );
 }
-::slotted(:not([slot])).is-disabled {
+::slotted([disabled]:not([slot])) {
     color: var(
         --highcontrast-tabs-color-disabled,
         var(--mod-tabs-color-disabled, var(--spectrum-tabs-color-disabled))
     );
     cursor: default;
-}
-::slotted(:not([slot])).focus-visible {
-    color: var(
-        --highcontrast-tabs-color-key-focus,
-        var(--mod-tabs-color-key-focus, var(--spectrum-tabs-color-key-focus))
-    );
-}
-::slotted(:not([slot])):focus-visible {
-    color: var(
-        --highcontrast-tabs-color-key-focus,
-        var(--mod-tabs-color-key-focus, var(--spectrum-tabs-color-key-focus))
-    );
-}
-::slotted(:not([slot])).focus-visible:before {
-    border-color: var(
-        --highcontrast-tabs-focus-indicator-color,
-        var(
-            --mod-tabs-focus-indicator-color,
-            var(--spectrum-tabs-focus-indicator-color)
-        )
-    );
-}
-::slotted(:not([slot])):focus-visible:before {
-    border-color: var(
-        --highcontrast-tabs-focus-indicator-color,
-        var(
-            --mod-tabs-focus-indicator-color,
-            var(--spectrum-tabs-focus-indicator-color)
-        )
-    );
 }
 #selection-indicator {
     background-color: var(
@@ -322,14 +292,6 @@ governing permissions and limitations under the License.
         background-color: var(
             --highcontrast-tabs-focus-indicator-background-color
         );
-    }
-    #list ::slotted([selected]:not([slot])).focus-visible,
-    #list ::slotted([selected]:not([slot])):focus {
-        color: var(--highcontrast-tabs-color-selected);
-    }
-    #list ::slotted([selected]:not([slot])):focus,
-    #list ::slotted([selected]:not([slot])):focus-visible {
-        color: var(--highcontrast-tabs-color-selected);
     }
     :host([direction^='vertical'][compact])
         #list

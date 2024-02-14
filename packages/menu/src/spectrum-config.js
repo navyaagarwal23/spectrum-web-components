@@ -383,6 +383,7 @@ const config = {
                     name: 'regex',
                     regex: /spectrum-Menu-chevron/,
                 },
+                builder.element('li'),
             ],
             includeByWholeSelector: [
                 /* [dir=ltr] .spectrum-Menu.is-selectable .spectrum-Menu-item */

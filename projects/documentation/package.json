@@ -42,7 +42,6 @@
         "@web/rollup-plugin-html": "^2.1.2",
         "alex": "^10.0.0",
         "esbuild-plugin-lit-css": "^2.0.5",
-        "esm-resolve": "^1.0.8",
         "lunr": "^2.3.9",
         "markdown-it": "^14.0.0",
         "markdown-it-anchor": "^8.4.1",

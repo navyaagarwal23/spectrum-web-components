@@ -12,12 +12,13 @@ governing permissions and limitations under the License.
 
 import path from 'path';
 import fs from 'fs';
-import postcss from 'postcss';
+import { bundleAsync } from 'lightningcss';
 import cssProcessing from '../scripts/css-processing.cjs';
 import { fileURLToPath } from 'url';
 
 const { postCSSPlugins, wrapCSSResult } = cssProcessing;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const nodeModulesDir = path.resolve(__dirname, '..', 'node_modules');
 const configPath = path.resolve(path.join(__dirname, '..', 'config'));
 let header;
 try {
@@ -30,17 +31,38 @@ header = header.replace('<%= YEAR %>', new Date().getFullYear());
 
 export const processCSS = async (cssPath) => {
     let wrappedCSS = header;
-    const originCSS = fs.readFileSync(cssPath, 'utf8');
-    const processedCSS = await postcss(postCSSPlugins(cssPath, true))
-        .process(originCSS, {
-            from: cssPath,
-        })
-        .then((result) => {
-            return result;
-        })
-        .catch((error) => {
-            console.error(error?.message || error);
-        });
-    wrappedCSS += wrapCSSResult(processedCSS);
+    // const originCSS = fs.readFileSync(cssPath, 'utf8');
+    // const processedCSS = await postcss(postCSSPlugins(cssPath, true))
+    //     .process(originCSS, {
+    //         from: cssPath,
+    //     })
+    //     .then((result) => {
+    //         return result;
+    //     })
+    //     .catch((error) => {
+    //         console.error(error?.message || error);
+    //     });
+    console.log(cssPath);
+    let { code, map } = await bundleAsync({
+        filename: cssPath,
+        minify: true,
+        resolver: {
+            read(filePath) {
+                const file = fs.readFileSync(filePath, 'utf8');
+                return file;
+            },
+            resolve(specifier, from) {
+                if (specifier.startsWith('./')) {
+                    const resolution = path.resolve(from, '..', specifier);
+                    return resolution;
+                } else {
+                    const resolution = path.resolve(nodeModulesDir, specifier);
+                    return resolution;
+                }
+            },
+        },
+    });
+    console.log(cssPath);
+    wrappedCSS += wrapCSSResult(code);
     fs.writeFileSync(cssPath + '.ts', wrappedCSS, 'utf-8');
 };
