@@ -179,3 +179,14 @@ textarea {
         )
     );
 }
+
+form.input,
+#form-container {
+    display: flex;
+    padding: 0 !important;
+    border: 0;
+}
+
+#formWrapper.input {
+    -webkit-text-fill-color: initial;
+}
