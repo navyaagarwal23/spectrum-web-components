@@ -12,6 +12,10 @@ governing permissions and limitations under the License.
 
 @import './spectrum-tab.css';
 
+:host {
+    --spectrum-tabs-focus-indicator-width: 0;
+}
+
 :host([disabled]) {
     pointer-events: none;
 }
