@@ -141,9 +141,12 @@ export class MenuItem extends LikeAnchor(
         return [menuItemStyles, checkmarkStyles, chevronStyles];
     }
 
+    static nextId = 0;
     static instanceCount = 0;
 
     private isInSubmenu = false;
+
+    public __swcMenuItemId = MenuItem.nextId++;
 
     @property({ type: Boolean, reflect: true })
     public active = false;

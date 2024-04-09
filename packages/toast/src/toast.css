@@ -24,6 +24,7 @@ governing permissions and limitations under the License.
         opacity var(--spectrum-overlay-animation-duration) ease-in-out,
         visibility 0s linear var(--spectrum-overlay-animation-duration);
     visibility: hidden;
+    max-inline-size: none;
 }
 
 :host([open]) {
